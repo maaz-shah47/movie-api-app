@@ -15,7 +15,7 @@ import MenuItem from '@mui/material/MenuItem';
 const pages = ['Movies', 'Seasons', 'News'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
-const Navbar = () => {
+const Navbar = (props) => {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
 
@@ -33,6 +33,10 @@ const Navbar = () => {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
+  const handleShowMovies = () => {
+    props.showMovies();
+  }
 
   return (
     <AppBar position="static" style={{ background: '#521c33' }}>
@@ -111,15 +115,27 @@ const Navbar = () => {
             Movie APP
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'center' }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
+            <Button
+              key='movie'
+              onClick={handleShowMovies}
+              sx={{ my: 2, color: 'white', display: 'block', mr:3  }}
+            >
+              Movies
+            </Button>
+            <Button
+                key='season'
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block', mr:3  }}
               >
-                {page}
-              </Button>
-            ))}
+              Seasons
+            </Button>
+            <Button
+              key='news'
+              onClick={handleCloseNavMenu}
+              sx={{ my: 2, color: 'white', display: 'block', mr:3  }}
+            >
+              News
+            </Button>
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>

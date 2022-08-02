@@ -1,9 +1,9 @@
 import React from 'react'
 import Navbar from '../UI/Appbar'
 
-const Header = () => {
+const Header = (props) => {
   return (
-    <Navbar />
+    <Navbar showMovies={props.showMovies} />
   )
 }
 
